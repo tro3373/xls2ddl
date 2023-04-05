@@ -15,8 +15,16 @@ clean:
 run: check clean
 	@go run ./main.go
 
-build: check clean
-	@env GOOS=linux go build -ldflags="-s -w"
+help:
+	@go run ./main.go -h
+
+build-linux:
+	@make GOOS=linux _build
+build-mac:
+	@make GOOS=darwin _build
+
+_build: check clean
+	@env GOOS=$(GOOS) go build -ldflags="-s -w"
 
 deps:
 	@go list -m all
