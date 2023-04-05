@@ -40,8 +40,12 @@ DescriptionCol: AF
 `,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
-	Run: func(cmd *cobra.Command, files []string) {
-		err := Gen(config, files)
+	Run: func(cmd *cobra.Command, args []string) {
+		if len(args) == 0 {
+			log.Error("Specify xls file")
+			os.Exit(1)
+		}
+		err := Gen(config, args)
 		if err != nil {
 			log.Error("Failed to gen ddl", err)
 			os.Exit(1)
