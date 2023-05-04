@@ -1,0 +1,16 @@
+IgnoreSheet:
+  - 型一覧
+  - '.*データ'
+TableOption: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci'
+TableCell: W1
+TableNameCell: W2
+AdditionalOptionCell: BB1
+ColumnStartRow: 6
+ColumnCol: C
+ColumnNameCol: K
+TypeCol: S
+DigitCol: W # 桁
+DecimalCol: Y # 少数
+NNCol: AA
+PKCol: AD
+DescriptionCol: AF
