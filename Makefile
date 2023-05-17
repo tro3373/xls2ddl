@@ -13,7 +13,7 @@ clean:
 	@for d in $(name); do if [[ -e $${d} ]]; then echo "==> Removing $${d}.." && rm -rf $${d}; fi done
 
 run: check clean
-	@go run ./main.go ./test/test.xlsx
+	@LOG_LEVEL=debug go run . ./test/test.xlsx
 
 help:
 	@go run ./main.go -h

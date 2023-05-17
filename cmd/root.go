@@ -89,6 +89,10 @@ func initConfig() {
 }
 
 func initConfigInner() error {
+	level, err := log.ParseLevel(os.Getenv("LOG_LEVEL"))
+	if err == nil {
+		log.SetLevel(level)
+	}
 	if cfgFile != "" {
 		// Use config file from the flag.
 		viper.SetConfigFile(cfgFile)
@@ -111,7 +115,7 @@ func initConfigInner() error {
 
 	log.Debug(">>>>>> os.Args", os.Args)
 	// If a config file is found, read it in.
-	err := viper.ReadInConfig()
+	err = viper.ReadInConfig()
 	if err != nil {
 		return err
 	}
@@ -120,6 +124,6 @@ func initConfigInner() error {
 	if err != nil {
 		return err
 	}
-	log.Debug("> Loaded config:", config)
+	log.Debugf("> Loaded config: %#+v", config)
 	return nil
 }
